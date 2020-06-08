@@ -2,10 +2,12 @@ package com.ihg.hotel.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ihg.hotel.model.WebhookRequest;
 import com.ihg.hotel.model.WebhookResponse;
 
+@RestController
 public class HotelFinderController {
 	
 	@PostMapping(path = "/webhook")
