@@ -1,5 +1,7 @@
 package com.ihg.hotel.controller;
 
+import java.util.Date;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,12 +16,12 @@ public class HotelFinderController {
 	public WebhookResponse webhook(@RequestBody WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
 		
-		String city = request.getQueryResult().getParameters().get("city").toString();
-		String checkIn = request.getQueryResult().getParameters().get("checkIn").toString();
-		String checkOut = request.getQueryResult().getParameters().get("checkOut").toString();
-		String adults = request.getQueryResult().getParameters().get("adults").toString();
-		String children = request.getQueryResult().getParameters().get("children").toString();
-		String rooms = request.getQueryResult().getParameters().get("rooms").toString();
+		String city = request.getQueryResult().getParameters().getCity();
+		int checkIn = request.getQueryResult().getParameters().getCheckIn().getDate();
+		int checkOut = request.getQueryResult().getParameters().getCheckOut().getDate();
+		int adults = request.getQueryResult().getParameters().getAdults();
+		int children = request.getQueryResult().getParameters().getChildren();
+		int rooms = request.getQueryResult().getParameters().getRooms();
 		
 		response.setFulfillmentText("Your request for "+rooms+" room(s) for "+adults+" adult(s) and "+children+
 				" child(ren) from "+checkIn+" to "+checkOut+" in "+city+" has been confirmed.");

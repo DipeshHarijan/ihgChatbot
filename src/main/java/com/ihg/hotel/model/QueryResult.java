@@ -1,19 +1,15 @@
 package com.ihg.hotel.model;
 
-import java.util.Map;
-
 public class QueryResult {
-	
-	private Map<Object, Object> parameters;
 
-	public Map<Object, Object> getParameters() {
+	private Parameters parameters;
+
+	public Parameters getParameters() {
 		return parameters;
 	}
 
-	public void setParameters(Map<Object, Object> parameters) {
+	public void setParameters(Parameters parameters) {
 		this.parameters = parameters;
 	}
-	
-	
 
 }
