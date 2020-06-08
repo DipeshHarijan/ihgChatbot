@@ -11,21 +11,21 @@ import com.ihg.hotel.model.WebhookResponse;
 
 @RestController
 public class HotelFinderController {
-	
+
 	@PostMapping(path = "/webhook")
 	public WebhookResponse webhook(@RequestBody WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
-		
+
 		String city = request.getQueryResult().getParameters().getCity();
-		int checkIn = request.getQueryResult().getParameters().getCheckIn().getDate();
-		int checkOut = request.getQueryResult().getParameters().getCheckOut().getDate();
+		Date checkIn = request.getQueryResult().getParameters().getCheckIn();
+		Date checkOut = request.getQueryResult().getParameters().getCheckOut();
 		int adults = request.getQueryResult().getParameters().getAdults();
 		int children = request.getQueryResult().getParameters().getChildren();
 		int rooms = request.getQueryResult().getParameters().getRooms();
-		
-		response.setFulfillmentText("Your request for "+rooms+" room(s) for "+adults+" adult(s) and "+children+
-				" child(ren) from "+checkIn+" to "+checkOut+" in "+city+" has been confirmed.");
-		return response ;
+
+		response.setFulfillmentText("Your request for " + rooms + " room(s) for " + adults + " adult(s) and " + children
+				+ " child(ren) from " + checkIn + " to " + checkOut + " in " + city + " has been confirmed.");
+		return response;
 	}
 
 }
