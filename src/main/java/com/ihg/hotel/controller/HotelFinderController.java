@@ -22,9 +22,14 @@ public class HotelFinderController {
 		int adults = request.getQueryResult().getParameters().getAdults();
 		int children = request.getQueryResult().getParameters().getChildren();
 		int rooms = request.getQueryResult().getParameters().getRooms();
+		
+		if(checkIn.after(checkOut)) {
+			response.setFulfillmentText("CheckIn date cannot be after the checkOut date");
+		}else {
 
-		response.setFulfillmentText("Your request for " + rooms + " room(s) for " + adults + " adult(s) and " + children
+			response.setFulfillmentText("Your request for " + rooms + " room(s) for " + adults + " adult(s) and " + children
 				+ " child(ren) from " + checkIn + " to " + checkOut + " in " + city + " has been confirmed.");
+		}
 		return response;
 	}
 
