@@ -10,6 +10,15 @@ public class Parameters {
 	private Date checkIn;
 	private Date checkOut;
 	private int rooms;
+	private String ratePreference;
+
+	public String getRatePreference() {
+		return ratePreference;
+	}
+
+	public void setRatePreference(String ratePreference) {
+		this.ratePreference = ratePreference;
+	}
 
 	public String getCity() {
 		return city;
