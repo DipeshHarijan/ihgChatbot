@@ -30,7 +30,7 @@ public class HotelFinderController {
 
 			response.setFulfillmentText("Your request for " + rooms + " room(s) for " + adults + " adult(s) and "
 					+ children + " child(ren) from " + checkIn + " to " + checkOut + " in " + city
-					+ "with rate preference " + ratePreference + " has been confirmed.");
+					+ " with rate preference " + ratePreference + " has been confirmed.");
 		}
 		return response;
 	}
