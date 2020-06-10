@@ -39,6 +39,10 @@ public class HotelFinderController {
 			case "loyalty_enquiry":
 				response = hotelFinderService.getLoyaltyOptions(request);
 				break;
+				
+			case "reservation_enquiry_confirmation_fin":
+				response = hotelFinderService.getReservationStatus(request);
+				break;
 
 			default:
 				response.setFulfillmentText("Did not match the intent");
