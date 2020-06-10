@@ -47,4 +47,13 @@ public class HotelFinderService {
 		return response;
 	}
 
+	public WebhookResponse getLoyaltyOptions(WebhookRequest request) {
+		WebhookResponse response = new WebhookResponse();
+		response.setFulfillmentText(
+				"In IHG Reward Club/Loyalty Program, you can use your Points to book a free or discounted standard room at any of the IHG hotels and resorts worldwide, with no blackout dates.\r\n"
+						+ "\r\n" + "Following Loyalty Programs are listed below:\r\n" + "\r\n" + "1. Ambassador\r\n"
+						+ "2. Karma\r\n" + "3. Rewards Club");
+		return response;
+	}
+
 }

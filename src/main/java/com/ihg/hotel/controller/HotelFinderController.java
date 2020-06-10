@@ -20,7 +20,7 @@ public class HotelFinderController {
 		WebhookResponse response = new WebhookResponse();
 
 		try {
-			String intent = request.getQueryResult().getIntent().getDisplayName().toLowerCase();
+			String intent = request.getQueryResult().getIntent().getDisplayName();
 
 			switch (intent) {
 
@@ -31,9 +31,15 @@ public class HotelFinderController {
 			case "loyalty_point_balance_confirmation_fin":
 				response = hotelFinderService.getLoyaltyPoints(request);
 				break;
+
 			case "loyalty_membership_status_confirmation_fin":
 				response = hotelFinderService.getLoyaltyStatus(request);
 				break;
+
+			case "loyalty_enquiry":
+				response = hotelFinderService.getLoyaltyOptions(request);
+				break;
+
 			default:
 				response.setFulfillmentText("Did not match the intent");
 			}
