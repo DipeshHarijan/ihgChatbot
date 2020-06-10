@@ -11,6 +11,15 @@ public class Parameters {
 	private Date checkOut;
 	private int rooms;
 	private String ratePreference;
+	private RCNumber rcNumber;
+
+	public RCNumber getRcNumber() {
+		return rcNumber;
+	}
+
+	public void setRcNumber(RCNumber rcNumber) {
+		this.rcNumber = rcNumber;
+	}
 
 	public String getRatePreference() {
 		return ratePreference;
