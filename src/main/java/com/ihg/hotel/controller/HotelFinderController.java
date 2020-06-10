@@ -24,12 +24,15 @@ public class HotelFinderController {
 			
 			switch(intent) {
 			
-			case "hotel_finder":
+			case "find_hotel":
 				response = hotelFinderService.getHotelReservation(request);
 				break;
 				
 			case "loyalty_point_balance_confirmation_fin":
 				response = hotelFinderService.getLoyaltyPoints(request);
+				break;
+			default:
+				response.setFulfillmentText("Did not match the intent");
 			}
 		}
 		catch(Exception e) {
