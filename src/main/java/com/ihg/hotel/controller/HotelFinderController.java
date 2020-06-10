@@ -11,35 +11,36 @@ import com.ihg.hotel.service.HotelFinderService;
 
 @RestController
 public class HotelFinderController {
-	
+
 	@Autowired
 	private HotelFinderService hotelFinderService;
 
 	@PostMapping(path = "/webhook")
 	public WebhookResponse webhook(@RequestBody WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
-		
+
 		try {
 			String intent = request.getQueryResult().getIntent().getDisplayName().toLowerCase();
-			
-			switch(intent) {
-			
+
+			switch (intent) {
+
 			case "find_hotel":
 				response = hotelFinderService.getHotelReservation(request);
 				break;
-				
+
 			case "loyalty_point_balance_confirmation_fin":
 				response = hotelFinderService.getLoyaltyPoints(request);
+				break;
+			case "loyalty_membership_status_confirmation_fin":
+				response = hotelFinderService.getLoyaltyStatus(request);
 				break;
 			default:
 				response.setFulfillmentText("Did not match the intent");
 			}
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			response.setFulfillmentText(e.getMessage());
 		}
 
-		
 		return response;
 	}
 
