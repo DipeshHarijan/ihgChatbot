@@ -56,4 +56,19 @@ public class HotelFinderService {
 		return response;
 	}
 
+	public WebhookResponse getReservationStatus(WebhookRequest request) {
+		WebhookResponse response = new WebhookResponse();
+		String email = request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
+				.getEmail();
+		int rcNumber = request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
+				.getRcNumber().getNumber();
+		if (email != null) {
+			response.setFulfillmentText("Reservation with email id " + email + " is confirmed");
+		} else if (rcNumber != 0) {
+			response.setFulfillmentText("Reservation with RC number " + rcNumber + " is confirmed");
+
+		}
+		return response;
+	}
+
 }

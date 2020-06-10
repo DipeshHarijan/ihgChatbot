@@ -12,7 +12,15 @@ public class Parameters {
 	private int rooms;
 	private String ratePreference;
 	private RCNumber rcNumber;
+	private ReservationEnquiry reservationEnquiry;
 
+	public ReservationEnquiry getReservationEnquiry() {
+		return reservationEnquiry;
+	}
+
+	public void setReservationEnquiry(ReservationEnquiry reservationEnquiry) {
+		this.reservationEnquiry = reservationEnquiry;
+	}
 
 	public RCNumber getRcNumber() {
 		return rcNumber;
