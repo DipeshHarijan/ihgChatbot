@@ -43,7 +43,7 @@ public class HotelFinderService {
 	public WebhookResponse getLoyaltyStatus(WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
 		int rcNumber = request.getQueryResult().getOutputContexts().get(0).getParameters().getRcNumber().getNumber();
-		response.setFulfillmentText("Your membership with RC number " + rcNumber + "is active.");
+		response.setFulfillmentText("Your membership with RC number " + rcNumber + " is active till 12th June 2025.");
 		return response;
 	}
 
