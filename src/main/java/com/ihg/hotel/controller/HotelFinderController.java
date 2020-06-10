@@ -29,7 +29,7 @@ public class HotelFinderController {
 				break;
 				
 			case "loyalty_point_balance_confirmation_fin":
-				response = hotelFinderService.getLoyaltyPoints(request);
+				response.setFulfillmentText("in loyalty points intent");
 				break;
 			default:
 				response.setFulfillmentText("Did not match the intent");
