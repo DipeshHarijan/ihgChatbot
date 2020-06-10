@@ -64,7 +64,7 @@ public class HotelFinderService {
 				.getRcNumber().getNumber();
 		if (email != null) {
 			response.setFulfillmentText("Reservation with email id " + email + " is confirmed");
-		} else if (rcNumber != 0) {
+		} else {
 			response.setFulfillmentText("Reservation with RC number " + rcNumber + " is confirmed");
 
 		}
