@@ -35,7 +35,7 @@ public class HotelFinderService {
 
 	public WebhookResponse getLoyaltyPoints(WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
-		int rcNumber = request.getQueryResult().getOutputContexts().get(0).getParameters().getRcNumber().getNumber();
+		int rcNumber = request.getQueryResult().getOutputContexts().get(0).getParameters().getRCNumber().getNumber();
 		response.setFulfillmentText("The rewards points with RC number " + rcNumber + " is 2500");
 		return response;
 	}
