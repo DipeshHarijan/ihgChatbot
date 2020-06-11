@@ -13,6 +13,15 @@ public class Parameters {
 	private String ratePreference;
 	private RCNumber rcNumber;
 	private ReservationEnquiry reservationEnquiry;
+	private String loyaltyProgram;
+
+	public String getLoyaltyProgram() {
+		return loyaltyProgram;
+	}
+
+	public void setLoyaltyProgram(String loyaltyProgram) {
+		this.loyaltyProgram = loyaltyProgram;
+	}
 
 	public ReservationEnquiry getReservationEnquiry() {
 		return reservationEnquiry;
