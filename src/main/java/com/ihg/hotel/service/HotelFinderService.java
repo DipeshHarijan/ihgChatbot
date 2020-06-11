@@ -1,5 +1,6 @@
 package com.ihg.hotel.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ public class HotelFinderService {
 
 		WebhookResponse response = new WebhookResponse();
 
+		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
 		String city = request.getQueryResult().getParameters().getCity();
 		Date checkIn = request.getQueryResult().getParameters().getCheckIn();
 		Date checkOut = request.getQueryResult().getParameters().getCheckOut();
@@ -27,8 +29,8 @@ public class HotelFinderService {
 		} else {
 
 			response.setFulfillmentText("Your request for " + rooms + " room(s) for " + adults + " adult(s) and "
-					+ children + " child(ren) from " + checkIn + " to " + checkOut + " in " + city
-					+ " with rate preference " + ratePreference + " has been confirmed.");
+					+ children + " child(ren) from " + formatter.format(checkIn) + " to " + formatter.format(checkOut)
+					+ " in " + city + " with rate preference " + ratePreference + " has been confirmed.");
 		}
 		return response;
 	}
@@ -94,7 +96,7 @@ public class HotelFinderService {
 	public WebhookResponse getLoyaltyProgram(WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
 		String membership = request.getQueryResult().getParameters().getLoyaltyProgram();
-		if (membership.equalsIgnoreCase("IHG Rewards Club")) {
+		if (membership.equalsIgnoreCase("Reward Club")) {
 			response.setFulfillmentText("IHG Rewards Club\r\n" + "\r\n"
 					+ "There is no membershp fee for IHG Reward Club. To maintain the Points in your membership account, you must have at least one “earn” or “redeem” transaction posted to your account every twelve (12) months\r\n"
 					+ "\r\n" + "The membership tiers for IHG Rewards club are:\r\n" + "\r\n"
