@@ -15,7 +15,7 @@ public class HotelFinderService {
 
 		WebhookResponse response = new WebhookResponse();
 
-		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
 		String city = request.getQueryResult().getParameters().getCity();
 		Date checkIn = request.getQueryResult().getParameters().getCheckIn();
 		Date checkOut = request.getQueryResult().getParameters().getCheckOut();
