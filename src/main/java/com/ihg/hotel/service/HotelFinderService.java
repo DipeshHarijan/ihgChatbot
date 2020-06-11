@@ -36,7 +36,12 @@ public class HotelFinderService {
 	public WebhookResponse getLoyaltyPoints(WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
 		int rcNumber = request.getQueryResult().getOutputContexts().get(0).getParameters().getRcNumber().getNumber();
-		response.setFulfillmentText("The rewards points with RC number " + rcNumber + "  is 2500");
+		if (rcNumber == 1001) {
+			response.setFulfillmentText("Hi Akshay, Your reward points are 23000");
+		} else if (rcNumber == 1002) {
+			response.setFulfillmentText("Hi Mohit, Your reward points are 20000");
+		} else
+			response.setFulfillmentText("The rewards points with RC number " + rcNumber + "  is 12000");
 		return response;
 	}
 
@@ -50,9 +55,8 @@ public class HotelFinderService {
 	public WebhookResponse getLoyaltyOptions(WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
 		response.setFulfillmentText(
-				"In IHG Reward Club/Loyalty Program, you can use your Points to book a free or discounted standard room at any of the IHG hotels and resorts worldwide, with no blackout dates.\r\n"
-						+ "\r\n" + "Following Loyalty Programs are listed below:\r\n" + "\r\n" + "1. Ambassador\r\n"
-						+ "2. Karma\r\n" + "3. Rewards Club");
+				"At IHG we offer the following reward clubs loyalty programs listed below:\r\n  1. Rewards Club\r\n"
+						+ "2. Ambassador\r\n" + "3. Business Rewards Club\r\n"+"4. Karma\r\n");
 		return response;
 	}
 
@@ -60,16 +64,28 @@ public class HotelFinderService {
 		WebhookResponse response = new WebhookResponse();
 		String email = null;
 		int rcNumber = 0;
-		if(request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry().getEmail() != null) {
-			email = request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry().getEmail();
-		}else {
-			rcNumber =  request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
+		if (request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
+				.getEmail() != null) {
+			email = request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
+					.getEmail();
+		} else {
+			rcNumber = request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
 					.getRcNumber().getNumber();
 		}
 		if (email != null) {
-			response.setFulfillmentText("Reservation with email id " + email + " is confirmed");
+			if (email.equalsIgnoreCase("praveen@gmail.com")) {
+				response.setFulfillmentText(
+						"Hi Praveen your reservation with IHG Holiday Inn Bangalore is confirmed for 2 days starting 25th June, 2020 and your reservation Id is: RSV1872");
+			} else if (email.equalsIgnoreCase("bharath@gmail.com")) {
+				response.setFulfillmentText(
+						"Hi Bharath your reservation with IHG Crown Plaza Atlanta, GA is confirmed for 2 days starting 15th August, 2020 and your reservation Id is: RSV34251");
+			} else
+				response.setFulfillmentText("Reservation with email id " + email
+						+ " is confirmed for Crown Plaza, NY for 4 days starting 15th July, 2020 and your reservation Id is: RSV78388");
 		} else {
-			response.setFulfillmentText("Reservation with RC number " + rcNumber + " is confirmed");
+
+			response.setFulfillmentText("Reservation with RC number " + rcNumber
+					+ " is confirmed for 5 days starting 5th July, 2020 and your reservation Id is: RSV11388");
 
 		}
 		return response;
