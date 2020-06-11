@@ -58,10 +58,14 @@ public class HotelFinderService {
 
 	public WebhookResponse getReservationStatus(WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
-		String email = request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
-				.getEmail();
-		int rcNumber = request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
-				.getRcNumber().getNumber();
+		String email = null;
+		int rcNumber = 0;
+		if(request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry().getEmail() != null) {
+			email = request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry().getEmail();
+		}else {
+			rcNumber =  request.getQueryResult().getOutputContexts().get(0).getParameters().getReservationEnquiry()
+					.getRcNumber().getNumber();
+		}
 		if (email != null) {
 			response.setFulfillmentText("Reservation with email id " + email + " is confirmed");
 		} else {
