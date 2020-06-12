@@ -96,7 +96,7 @@ public class HotelFinderService {
 	public WebhookResponse getLoyaltyProgram(WebhookRequest request) {
 		WebhookResponse response = new WebhookResponse();
 		String membership = request.getQueryResult().getParameters().getLoyaltyProgram();
-		if (membership.equalsIgnoreCase("Reward Club")) {
+		if (membership.equalsIgnoreCase("IHG Rewards Club")) {
 			response.setFulfillmentText("IHG Rewards Club\r\n" + "\r\n"
 					+ "There is no membershp fee for IHG Reward Club. To maintain the Points in your membership account, you must have at least one “earn” or “redeem” transaction posted to your account every twelve (12) months\r\n"
 					+ "\r\n" + "The membership tiers for IHG Rewards club are:\r\n" + "\r\n"
@@ -105,7 +105,7 @@ public class HotelFinderService {
 					+ "Platinum — 40 nights / 40 000 Elite qualifying points. ...\r\n" + "\r\n"
 					+ "Spire — 75 nights / 75 000 Elite qualifying points.");
 		} else if (membership.equalsIgnoreCase("Ambassador")) {
-			response.setFulfillmentText("In addition to being an IHG Rewwards Club member,\r\n" + "\r\n"
+			response.setFulfillmentText("In addition to being an IHG Rewards Club member,\r\n" + "\r\n"
 					+ "There is a $5,000 spend requirement between the eligible dates at InterContinental, Kimpton, and Regent-brands to qualify for Royal Ambassador successfully.");
 		} else if (membership.equalsIgnoreCase("Business Rewards")) {
 			response.setFulfillmentText(
@@ -120,7 +120,7 @@ public class HotelFinderService {
 							+ "\r\n"
 							+ "Awarded to those most loyal to Kimpton, IHG® Rewards Club Members will receive an invitation when they’ve reached Spire Elite and meet the Inner Circle criteria (unpublished) that is based on loyalty to the brand over the course of the year");
 		} else {
-			response.setFulfillmentText("Could not find your membership. Please try again.");
+			response.setFulfillmentText("Could not find your membership. Please");
 		}
 		return response;
 	}
